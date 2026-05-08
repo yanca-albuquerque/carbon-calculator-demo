@@ -1,0 +1,517 @@
+:root {
+  /* Eco-friendly color palette */
+  --primary: #10b981;
+  --secondary: #059669;
+  --accent: #34d399;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --bg: #f3f4f6;
+  --white: #ffffff;
+
+  /* Spacing scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Border radius */
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Header */
+.header {
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.header__title {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.header__subtitle {
+  color: var(--text-light);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.footer {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--white);
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-lg);
+}
+
+/* Form styling */
+.calculator-form {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.calculator-form__field {
+  margin-bottom: var(--spacing-md);
+}
+
+.calculator-form__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text);
+}
+
+.calculator-form__input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--text-light);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.calculator-form__input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  outline: none;
+}
+
+.calculator-form__input--readonly {
+  background-color: var(--bg);
+  cursor: not-allowed;
+}
+
+.calculator-form__helper {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-xs);
+}
+
+.calculator-form__checkbox {
+  margin-right: var(--spacing-sm);
+}
+
+.calculator-form__label--checkbox {
+  display: inline;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+/* Transport mode grid */
+.calculator-form__transport-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.calculator-form__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.calculator-form__transport-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md);
+  border: 1px solid var(--text-light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  background: var(--white);
+}
+
+.calculator-form__transport-option:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.calculator-form__radio:checked + .calculator-form__transport-option {
+  border-color: var(--primary);
+  border-width: 2px;
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.calculator-form__transport-text {
+    pointer-events: none;
+}
+
+.calculator-form__transport-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-xs);
+  pointer-events: none;
+}
+
+.calculator-form__transport-text {
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* Button */
+.calculator-form__submit {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.calculator-form__submit:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.calculator-form__submit:disabled {
+  background: var(--text-light);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--text-light);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .calculator-form__transport-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Results Section */
+.results, .comparison, .carbon-credits {
+  background: var(--white);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.results__card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+}
+
+.results__card--savings {
+  border-left: 4px solid var(--accent);
+  background: rgba(52, 211, 153, 0.1);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.results__card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.results__card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0;
+}
+
+.results__card-text {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.results__card-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0.25rem 0 0 0;
+}
+
+/* Comparison Section */
+.comparison__item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--text-light);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  background: var(--white);
+}
+
+.comparison__item--selected {
+  border-color: var(--primary);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.comparison__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.comparison__item-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.comparison__item-title {
+  font-weight: bold;
+  color: var(--text);
+  margin: 0;
+}
+
+.comparison__item-stats {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0.25rem 0 0 0;
+}
+
+.comparison__item-badge {
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.comparison__item-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comparison__progress-bar {
+  width: 100%;
+  height: 12px;
+  background: var(--text-light);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-left: 1rem;
+}
+
+.comparison__progress {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.comparison__progress--green {
+  background: var(--primary);
+}
+
+.comparison__progress--yellow {
+  background: var(--warning);
+}
+
+.comparison__progress--orange {
+  background: #f97316;
+}
+
+.comparison__progress--red {
+  background: var(--danger);
+}
+
+.comparison__tip {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 4px solid var(--info);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: var(--radius);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.comparison__tip strong {
+  color: var(--info);
+}
+
+/* Carbon Credits Section */
+.carbon-credits__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.carbon-credits__card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.carbon-credits__title {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.carbon-credits__value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0;
+}
+
+.carbon-credits__helper {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+.carbon-credits__info {
+  border: 2px dashed var(--info);
+  background: rgba(59, 130, 246, 0.05);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.carbon-credits__info strong {
+  color: var(--info);
+  font-weight: bold;
+}
+
+.carbon-credits__button {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  padding: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.carbon-credits__button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .carbon-credits__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results__card-value {
+    font-size: 1.25rem;
+  }
+
+  .carbon-credits__value {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .carbon-credits__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
